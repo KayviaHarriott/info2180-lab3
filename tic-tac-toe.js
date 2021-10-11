@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     /**Ex. 6-- Disallow cheating (used innerHTML=="") */
     var squares = document.getElementsByClassName("square");
     var prevSquare = null;
-    
+
     for (var i=0; i<square.length;i++){
         square[i].onclick = function(target){                
             if (this.innerHTML=="" && prevSquare!="X" ){
@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+    /**Ex. 5-- Restart the game */
+    const newGame = document.querySelector('.btn');
+    const loadGame = () => {location.reload();}
+    newGame.addEventListener('click', loadGame)
+    
 }, false);
 
