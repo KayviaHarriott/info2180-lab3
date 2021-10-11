@@ -11,7 +11,25 @@ document.addEventListener('DOMContentLoaded', function() {
     var prevSquare = null;
     var winner = "none";
 
-    for (var i=0; i<square.length;i++){        
+    var squareAttribute = "";
+
+    for (var i=0; i<square.length;i++){  
+
+        square[i].addEventListener("mouseover", addHover, false);
+        square[i].addEventListener("mouseout", removeHover, false);
+        let prevAttribute = "";
+        function addHover(){ 
+            squareAttribute = this.getAttribute("class");
+            newAttribute = squareAttribute + " hover square";
+            this.setAttribute("class",newAttribute);
+        }
+
+        function removeHover(){  
+            squareAttribute = this.getAttribute("class");
+            var newClass = squareAttribute.replace(/hover/g,'');
+            this.setAttribute("class",newClass);
+        }  
+
             square[i].onclick = function(target){                
                 if (this.innerHTML=="" && prevSquare!="X" ){
                     this.innerHTML = "X";
@@ -20,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (winner == "none"){
                         checkWinner(); 
                     }
+                    
                 }
                 if (this.innerHTML=="" && prevSquare!="O"){
                     this.innerHTML = "O";
@@ -33,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             }            
     }
-    
+
+ 
     let statusChange = document.getElementById("status");
     
     function checkWinner(){         
